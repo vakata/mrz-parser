@@ -53,6 +53,9 @@ class TravelDocumentType1Parser extends AbstractParser
             'dateOfExpiry' => $this->getDateToken($string, 39),
             'nationality' => $this->getToken($string, 46, 48)
         ];
+        if(empty($fields['personalNumber'])) {
+            $fields['personalNumber'] = $this->getToken($string, 49, 59);
+        }
 
         $names = $this->getNames($string, 61, 90);
         $fields['primaryIdentifier'] = $names[0];
